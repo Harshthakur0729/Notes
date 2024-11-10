@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h3 class="text-white text-xl font-bold">Note</h3>
+            <div>
+                <a href="/" class="text-white hover:text-gray-300 px-3 py-2">Home</a>
+                <a href="/new" class="text-white hover:text-gray-300 px-3 py-2">New Note</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-8 text-center">
+        <h1 class="text-3xl font-bold mb-4">Your Notes</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Example note card (repeat this structure for each note) -->
+            <% data.forEach(file=> { %>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-xl font-semibold mb-2">
+                        <%= file.name %>
+                    </h2>
+                    <p class="text-gray-600">
+                        <% if (file.isDirectory()) { %>
+                            Directory
+                            <% } else { %>
+                                File
+                                <% } %>
+                    </p>
+                    <div class="mt-4 flex justify-between">
+                        <a href="/show/<%=file.name%>" class="text-blue-500 hover:text-blue-700">View Details</a>
+                        <a href="/edit/<%=file.name%>" class="text-green-500 hover:text-green-700">Edit <i class="ri-edit-2-line"></i></a>
+                        <a href="/delete/<%=file.name%>" class="text-red-500 hover:text-red-700">Delete <i class="ri-delete-bin-line"></i></a>
+                    </div>
+                </div>
+                <% }) %>
+
+                    <!-- Repeat the above card structure for more notes -->
+        </div>
+        <div class="mt-8">
+            <a href="/new" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Note</a>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
